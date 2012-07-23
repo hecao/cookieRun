@@ -12,7 +12,7 @@ public class TreeLoader {
 		
 		String baseName = tree.name;
 		Texture textTrue = new Texture(Gdx.files.internal("data/" + baseName));
-		List tgs = SpriteUtils.getSprite(textTrue, tree.width, tree.height, tree.frameCount);
+		List tgs = SpriteUtils.getSprite(textTrue, tree.coordinates);
 		System.out.println(tgs.size());
 		Animation animation = new Animation(tree.duration, tgs);
 		

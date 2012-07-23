@@ -20,6 +20,7 @@ public class CookieCross implements ApplicationListener {
 	
 	private BitmapFont bf;
 	private Animation tree1Animation;
+	private Animation tree2Animation;
 	private float runningTime = 0;
 	
 	@Override
@@ -42,8 +43,10 @@ public class CookieCross implements ApplicationListener {
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
 		
 		bf = new BitmapFont();
-		tree1Animation = TreeLoader.loadTreeAnimation(Trees.TREE2);
+		tree1Animation = TreeLoader.loadTreeAnimation(Trees.TREE1);
 		tree1Animation.setPlayMode(Animation.LOOP);
+		tree2Animation = TreeLoader.loadTreeAnimation(Trees.TREE2);
+		tree2Animation.setPlayMode(Animation.LOOP);
 	}
 
 	@Override
@@ -62,10 +65,12 @@ public class CookieCross implements ApplicationListener {
 		float deltaTime = Gdx.graphics.getDeltaTime();
 		runningTime += deltaTime;
 		TextureRegion tg = tree1Animation.getKeyFrame(runningTime);
+		TextureRegion tree2 = tree2Animation.getKeyFrame(runningTime);
 		batch.begin();
 //		sprite.draw(batch);
 		bf.draw(batch, "Testin¡ª¡ªMkey libgdx(2)", 100, 100);
 		batch.draw(tg, 0, 0);
+		batch.draw(tree2, 65, 0);
 		batch.end();
 	}
 

@@ -8,24 +8,18 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class SpriteUtils {
 	
-	public static List getSprite(Texture texture, int singleWidth, int singleHeight, int count) {
+	public static List getSprite(Texture texture, int[] coordinates) {
 		
 
 		ArrayList result = new ArrayList();
-		
-		int textureW = texture.getWidth();
-		int textureH = texture.getHeight();
-		
-		int x = 0;
-		int y = 0;
-		for (int i = 0 ; i < count; i ++) {
-			TextureRegion tg = new TextureRegion(texture, x, y, singleWidth, singleHeight);
+		for (int i = 0 ; i < coordinates.length ; ) {
+			System.out.print(i + " _" + coordinates.length + "|");
+			int x = coordinates[i++];
+			int y = coordinates[i++];
+			int height = coordinates[i++];
+			int width = coordinates[i++];
+			TextureRegion tg = new TextureRegion(texture, x, y, width, height);
 			result.add(tg);
-			x += singleWidth;
-			if (x >= textureW) {
-				x = 0;
-				y += singleHeight;
-			}
 		}
 		
 		return result;
